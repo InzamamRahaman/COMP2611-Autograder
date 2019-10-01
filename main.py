@@ -29,7 +29,7 @@ def get_runner(lang):
     lang = lang.strip().lower()
     langs = {
         'python': process_python,
-        'java': process_java,
+ #       'java': process_java,
         'c++': process_cpp,
         'c': process_c,
         'cpp': process_cpp
@@ -63,7 +63,9 @@ def process_part(part, config, lang):
         ideal_solution_file = config['cases_output'][part]
         if file_comparator.comprator(solution_file, ideal_solution_file):
             return 10
+        return 0
     except:
+        print('Error handling part ', part)
         return 0
 
 
@@ -99,16 +101,17 @@ def process(config):
     current_dir = os.getcwd()
     print(current_dir)
     for id in ids:
-        mark_for_student = (process_student(config))
+        mark_for_student = (process_student(id, config))
         marks[id] = mark_for_student
         os.chdir(current_dir)
+    subprocess.call(['rm', '-rf', 'zipped'])
     return marks
 
 def mark_dict_to_csv(marks, config):
     parts = list(config['cases_output'].keys())
     content = f"Student ID,{','.join(parts)}\n"
     for id, marks in marks.items():
-        content += f"{id},','.join(map(str, marks))\n"
+        content += f"{id},{','.join(map(str, marks))}\n"
     with open(config['mark_file'], 'w') as fp:
         fp.write(content)
 

@@ -3,12 +3,12 @@
   "scripts": "./submissions",
   "parts": ["A", "B"],
   "cases_input": {
-    "A": [""],
-    "B": [""]
+    "A": [],
+    "B": []
   },
   "cases_output": {
-    "A": "",
-    "B": ""
+    "A": "/home/inzamam/Research/autograder/outputs/A/solutions.txt",
+    "B": "/home/inzamam/Research/autograder/outputs/B/solutions.txt"
   },
   "mark_file": "marks.csv",
   "num_parts": 2
