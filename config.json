@@ -1,0 +1,15 @@
+{
+
+  "scripts": "./submissions",
+  "parts": ["A", "B"],
+  "cases_input": {
+    "A": [""],
+    "B": [""]
+  },
+  "cases_output": {
+    "A": "",
+    "B": ""
+  },
+  "mark_file": "marks.csv",
+  "num_parts": 2
+}
