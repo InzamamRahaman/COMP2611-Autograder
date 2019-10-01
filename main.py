@@ -86,6 +86,7 @@ def process_student(id, config):
             os.chdir(current_dir)
         return marks
     except:
+        print('Error handling ', id)
         return [0] * int(config["num_parts"])
 
 
