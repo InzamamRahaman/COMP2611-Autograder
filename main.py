@@ -58,14 +58,15 @@ def process_part(part, config, lang):
             subprocess.call(['cp', file_path, tail])
         runner = get_runner(lang)
         runner()
-        text_files = glob.glob('solution*.txt')
+        text_files = glob.glob('solution*')
         solution_file = text_files[0]
         ideal_solution_file = config['cases_output'][part]
-        if file_comparator.comprator(solution_file, ideal_solution_file):
-            return 10
-        return 0
-    except:
-        print('Error handling part ', part)
+        print('Processing comparison!')
+        score = 0
+        score = file_comparator.comprator(solution_file, ideal_solution_file)
+        return int(score * 10)
+    except Exception as e:
+        print('Error handling part ', part, 'Error: ', e)
         return 0
 
 
@@ -77,18 +78,23 @@ def process_part(part, config, lang):
 def process_student(id, config):
     try:
         os.chdir(id)
-        student_config = {'lang': 'python'}
+        dirs = glob.glob(id)
+        print(dirs)
+        if dirs:
+            os.chdir(dirs[0])
+        student_config = {'Lang': 'python'}
         with open('config.json', 'r') as fp:
             student_config = json.load(fp)
         current_dir = os.getcwd()
         parts = config['parts']
+        print('read json')
         marks = []
         for part in parts:
-            marks.append(process_part(part, config, student_config['lang']))
+            marks.append(process_part(part, config, student_config['Lang']))
             os.chdir(current_dir)
         return marks
-    except:
-        print('Error handling ', id)
+    except Exception as e:
+        print('Error handling ', id, 'Error: ', e)
         return [0] * int(config["num_parts"])
 
 
@@ -101,8 +107,11 @@ def process(config):
     current_dir = os.getcwd()
     print(current_dir)
     for id in ids:
+        print('=======================================================')
+        print('Processing ', id)
         mark_for_student = (process_student(id, config))
-        marks[id] = mark_for_student
+        if 'MAC' not in id:
+            marks[id] = mark_for_student
         os.chdir(current_dir)
     subprocess.call(['rm', '-rf', 'zipped'])
     return marks

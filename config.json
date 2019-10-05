@@ -1,14 +1,21 @@
 {
 
-  "scripts": "./submissions",
+  "scripts": "/home/inzamam/Desktop/sub1/sub1",
   "parts": ["A", "B"],
   "cases_input": {
-    "A": [],
-    "B": []
+    "A": [
+      "/home/inzamam/Desktop/sub1/Cases/12345/A/dna.txt",
+      "/home/inzamam/Desktop/sub1/Cases/12345/A/patterns.txt"
+    ],
+    "B": [
+      "/home/inzamam/Desktop/sub1/Cases/12345/B/dns.txt",
+      "/home/inzamam/Desktop/sub1/Cases/12345/B/blacklist.txt",
+      "/home/inzamam/Desktop/sub1/Cases/12345/B/queries.txt"
+    ]
   },
   "cases_output": {
-    "A": "/home/inzamam/Research/autograder/outputs/A/solutions.txt",
-    "B": "/home/inzamam/Research/autograder/outputs/B/solutions.txt"
+    "A": "/home/inzamam/Desktop/sub1/Cases/12345/A/solution.txt",
+    "B": "/home/inzamam/Desktop/sub1/Cases/12345/B/solutions.txt"
   },
   "mark_file": "marks.csv",
   "num_parts": 2

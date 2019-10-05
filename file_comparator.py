@@ -14,4 +14,12 @@ def create_file_representation(path):
 def comprator(path1, path2):
     r1 = create_file_representation(path1)
     r2 = create_file_representation(path2)
-    return r1 == r2
+    print(r1)
+    print('-----------')
+    print(r2)
+    count = 0
+    for x, y in zip(r1, r2):
+        if x == y:
+            count += 1
+    score = float(count) / len(r2)
+    return score
